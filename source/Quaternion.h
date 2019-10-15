@@ -62,13 +62,13 @@ public:
 		return r;
 	}
 
-	inline const float Norm(){
+	inline const float Norm() const {
 		float d = v.Dot(v);
 		d += w*w;
 		return sqrtf(d);
 	}
 
-	inline const Quaternion Normalize(){
+	inline const Quaternion Normalize() const {
 		Quaternion r;
 		float norm = Norm();
 		r.w = w / norm;
@@ -76,14 +76,14 @@ public:
 		return r;
 	}
 
-	inline const Quaternion Conjugate(){
+	inline const Quaternion Conjugate() const {
 		Quaternion r;
 		r.w = this->w;
 		r.v = this->v*-1.0f;
 		return r;
 	}
 
-	inline const Quaternion Inverse(){
+	inline const Quaternion Inverse() const{
 		Quaternion r;
 		float d = this->Norm();
 		d = d*d;
@@ -93,7 +93,7 @@ public:
 		return (r*(1/d));
 	}
 	// r = qpq^-1 = qpq* || Body2Nav
-	inline const Vec3 RotatePoint(const Vec3& point){
+    inline  const Vec3 RotatePoint(const Vec3& point) const {
 		Quaternion p,r;
 
 		p.w = 0;
@@ -114,7 +114,7 @@ public:
 //	}
 
 	// r = q^-1pq = q*pq || Nav2Body
-	inline const Vec3 RotateFrame(const Vec3& point){
+	inline const Vec3 RotateFrame(const Vec3& point) const {
 		Quaternion p,r;
 
 		p.w = 0;
