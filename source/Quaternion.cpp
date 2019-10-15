@@ -1,13 +1,12 @@
 /*
  * Quaternion.cpp
  *
- *  Created on: 15 de jul de 2019
+ *  Created on: 15 de out de 2019
  *      Author: marcus
  */
 
-#include <Quaternion.h>
+#include "Quaternion.h"
+#include "Vec3.h"
 
-Quaternion::Quaternion() {
-	// TODO Auto-generated constructor stub
 
-}
+

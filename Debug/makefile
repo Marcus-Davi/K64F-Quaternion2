@@ -39,25 +39,25 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: libQuaternionLIBCpp.a
+all: libK64F-Quaternion2.a
 
 # Tool invocations
-libQuaternionLIBCpp.a: $(OBJS) $(USER_OBJS)
+libK64F-Quaternion2.a: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU Archiver'
-	arm-none-eabi-ar -r  "libQuaternionLIBCpp.a" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-ar -r  "libK64F-Quaternion2.a" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build
 
 # Other Targets
 clean:
-	-$(RM) $(CC_DEPS)$(C++_DEPS)$(C_UPPER_DEPS)$(CXX_DEPS)$(OBJS)$(ARCHIVES)$(CPP_DEPS)$(C_DEPS) libQuaternionLIBCpp.a
+	-$(RM) $(CC_DEPS)$(C++_DEPS)$(C_UPPER_DEPS)$(CXX_DEPS)$(OBJS)$(ARCHIVES)$(CPP_DEPS)$(C_DEPS) libK64F-Quaternion2.a
 	-@echo ' '
 
 post-build:
 	-@echo 'Performing post-build steps'
-	-arm-none-eabi-size "libQuaternionLIBCpp.a" ; # arm-none-eabi-objdump -h -S "libQuaternionLIBCpp.a" >"libQuaternionLIBCpp.lss"
+	-arm-none-eabi-size "libK64F-Quaternion2.a" ; # arm-none-eabi-objdump -h -S "libK64F-Quaternion2.a" >"libK64F-Quaternion2.lss"
 	-@echo ' '
 
 .PHONY: all clean dependents post-build
