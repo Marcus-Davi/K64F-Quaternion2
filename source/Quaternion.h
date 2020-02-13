@@ -26,7 +26,7 @@ public:
 		v = Vec3(defx,defy,defz);
 	}
 
-	inline const Quaternion operator+(const Quaternion& q) const {
+	inline Quaternion operator+(const Quaternion& q) const {
 		Quaternion r;
 		r.w = w+q.w;
 		r.v.x = v.x+q.v.x;
@@ -35,7 +35,7 @@ public:
 		return r;
 	}
 
-	inline const Quaternion operator-(const Quaternion& q) const {
+	inline Quaternion operator-(const Quaternion& q) const {
 		Quaternion r;
 		r.w = w-q.w;
 		r.v.x = v.x-q.v.x;
@@ -44,7 +44,7 @@ public:
 		return r;
 	}
 
-	inline const Quaternion operator*(const Quaternion& q) const {
+	inline Quaternion operator*(const Quaternion& q) const {
 		Quaternion r;
 		r.w = w*q.w - v.Dot(q.v);
 		r.v = v.Cross(q.v);
@@ -55,20 +55,20 @@ public:
 		return r;
 	}
 
-	inline const Quaternion operator*(const float k) const {
+	inline Quaternion operator*(const float k) const {
 		Quaternion r;
 		r.w = w*k;
 		r.v = v*k;
 		return r;
 	}
 
-	inline const float Norm() const {
+	inline float Norm() const {
 		float d = v.Dot(v);
 		d += w*w;
 		return sqrtf(d);
 	}
 
-	inline const Quaternion Normalize() const {
+	inline Quaternion Normalize() const {
 		Quaternion r;
 		float norm = Norm();
 		r.w = w / norm;
@@ -76,14 +76,14 @@ public:
 		return r;
 	}
 
-	inline const Quaternion Conjugate() const {
+	inline Quaternion Conjugate() const {
 		Quaternion r;
 		r.w = this->w;
 		r.v = this->v*-1.0f;
 		return r;
 	}
 
-	inline const Quaternion Inverse() const{
+	inline Quaternion Inverse() const{
 		Quaternion r;
 		float d = this->Norm();
 		d = d*d;
@@ -93,7 +93,7 @@ public:
 		return (r*(1/d));
 	}
 	// r = qpq^-1 = qpq* || Body2Nav
-    inline  const Vec3 RotatePoint(const Vec3& point) const {
+    inline  Vec3 RotatePoint(const Vec3& point) const {
 		Quaternion p,r;
 
 		p.w = 0;
@@ -114,7 +114,7 @@ public:
 //	}
 
 	// r = q^-1pq = q*pq || Nav2Body
-	inline const Vec3 RotateFrame(const Vec3& point) const {
+	inline Vec3 RotateFrame(const Vec3& point) const {
 		Quaternion p,r;
 
 		p.w = 0;
@@ -128,8 +128,8 @@ public:
 		return r.v;
 	}
 
-
-	void Print(); // IMPLEMENTAR NA APP
+	//Implementar na aplicação
+	static void Print(const Quaternion& q);
 
 
 
