@@ -14,12 +14,18 @@
 
 class Quaternion {
 
-private:
+public:
+
+
 	float w;
 	Vec3 v;
 
-public:
-	Quaternion(){}
+	//Methods
+
+	Quaternion(){
+		w = 1.0;
+		v = Vec3(0,0,0);
+	}
 
 	Quaternion(float defw,float defx, float defy, float defz){
 		w = defw;
@@ -55,6 +61,7 @@ public:
 		return r;
 	}
 
+	//scanle
 	inline const Quaternion operator*(const float k) const {
 		Quaternion r;
 		r.w = w*k;
